@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarkNic - Encuentra tu Empleo</title>
+    <link rel="stylesheet" href="1. style-Buscador.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="card-container">
+        
+        <div class="top-section">
+            <div class="header-content">
+                <img src="Logo Temp.png" alt="Icono MarkNic" class="world-icon">
+                <h1 class="marknic-logo">
+                    <span class="text-white">Mark</span><span class="text-purple">Nic</span>
+                </h1>
+            </div>
+
+            <div class="curve-divider">
+                <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+                    <path fill="#ffffff" d="M0,192L48,208C96,224,192,256,288,256C384,256,480,224,576,224C672,224,768,256,864,256C960,256,1056,224,1152,202.7C1248,181,1344,171,1392,165.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                </svg>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h6 class="section-title">Encuentra tu trabajo ideal</h6>
+            
+            <form class="search-form" id="formBusqueda">
+                <div class="search-inputs">
+                    <div class="input-group">
+                        <i class="fa fa-briefcase input-icon"></i>
+                        <input type="text" id="cargo" placeholder="Cargo o área" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fa fa-map-marker-alt input-icon"></i>
+                        <input type="text" id="lugar" placeholder="Lugar (Ej: Managua)" required>
+                    </div>
+                </div>
+                <button type="button" class="search-button" onclick="validarYEnviar()">
+                    <i class="fa fa-search"></i> Buscar empleos
+                </button>
+            </form>
+
+            <div class="extra-content">
+                <div class="categories-grid">
+                    <div class="cat-item"><i class="fa fa-laptop-code"></i><span>IT</span></div>
+                    <div class="cat-item"><i class="fa fa-headset"></i><span>Call Center</span></div>
+                    <div class="cat-item"><i class="fa fa-bolt"></i><span>Eléctrica</span></div>
+                    <div class="cat-item"><i class="fa fa-shopping-cart"></i><span>Ventas</span></div>
+                </div>
+
+                <div class="recent-jobs">
+                    <h3>Anuncios de empleos recientes</h3>
+                    
+                    <div class="job-card">
+                        <div class="job-info">
+                            <strong>Ejecutivo de Soporte Técnico</strong>
+                            <p>Maverick, S.A. - Managua, Nicaragua</p>
+                        </div>
+                        <span class="job-badge bg-new">Nuevo</span>
+                    </div>
+                    
+                    <div class="job-card">
+                        <div class="job-info">
+                            <strong>Pasante de Sistemas</strong>
+                            <p>Castillo Solutions - Matagalpa, Nicaragua</p>
+                        </div>
+                        <span class="job-badge bg-urgent">Destacado</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-banner">
+            <p>Crea una cuenta o regístrate para recibir recomendaciones personalizadas.</p>
+        </div>
+
+        <footer>
+            <small>&copy; 2026 MarkNic</small>
+        </footer>
+    </div>
+
+    <script src="5. Valibusq.js"></script>
+</body>
+</html>

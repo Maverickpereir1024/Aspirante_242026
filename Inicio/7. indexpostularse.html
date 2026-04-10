@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postulación Profesional | Bolsa de Empleo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="7. indexpost.css">
+</head>
+<body>
+
+    <div class="modal-postulacion">
+        <header class="header-postulacion">
+            <h1>Postularme</h1>
+            <p>Ingresa tu información profesional para aplicar</p>
+        </header>
+
+        <section class="form-section">
+                <h3><i class="fas fa-file-pdf"></i> Adjuntar Currículum</h3>
+                <div class="upload-area" id="drop-zone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p id="upload-text">Subir Currículum Vitae</p>
+                    <span id="upload-subtext">Haz clic o arrastra tu archivo (PDF)</span>
+                    <input type="file" id="file-cv" hidden accept=".pdf" required>
+                    <div id="file-ready" class="file-name-info"></div>
+                </div>
+            </section>
+
+        <form class="form-postulacion" id="form-cv">
+            <section class="form-section">
+    <h3><i class="fas fa-id-card"></i> Información Personal</h3>
+    
+    <div class="input-row">
+        <div class="input-group">
+            <label>Nombre Completo</label>
+            <input type="text" id="nombre" placeholder="Ej. Juan Jose Lopez" required autocomplete="name">
+        </div>
+        <div class="input-group">
+            <label>Cédula de Identidad</label>
+            <input type="text" id="cedula" placeholder="001-000000-0000X" required pattern="[0-9]{3}-[0-9]{6}-[0-9]{4}[A-Z,a-z]{1}">
+        </div>
+    </div>
+    
+    <div class="input-row">
+        <div class="input-group">
+            <label>Teléfono de contacto</label>
+            <input type="tel" id="tel" placeholder="8888-8888" required autocomplete="tel">
+        </div>
+
+        <div class="input-group">
+            <label>Fecha de Nacimiento</label>
+            <input type="date" id="fecha-nacimiento" required>
+        </div>
+
+    </div>
+
+    <div class="input-group">
+        <label>Dirección</label>
+        <input type="text" id="direccion" placeholder="Ej. Managua, Nicaragua" required autocomplete="street-address">
+    </div>
+</section>
+
+            <section class="form-section">
+    <h3><i class="fas fa-tasks"></i> Perfil y Conocimientos</h3>
+    
+
+ <div class="input-group" style="margin-top: 20px;">
+    <label>Conocimientos</label>
+    <div class="tags-container" id="tags-container">
+        <input type="text" id="tag-input" placeholder="Ej. Python, Excel Avanz. Figma...">
+    </div>
+    <input type="hidden" name="conocimientos_lista" id="conocimientos-hidden">
+</div>
+            
+
+            <div class="acciones-form">
+                <button type="button" class="btn-cancelar" onclick="window.history.back()">Cancelar</button>
+                <button type="submit" class="btn-enviar" id="btn-submit">
+                    <span id="text-enviar">Enviar Postulación</span>
+                    <i class="fas fa-circle-notch fa-spin" id="spinner" style="display: none;"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-cv');
+        const fileNameDisplay = document.getElementById('file-ready');
+        const uploadText = document.getElementById('upload-text');
+        const uploadSubtext = document.getElementById('upload-subtext');
+        const form = document.getElementById('form-cv');
+        const btnSubmit = document.getElementById('btn-submit');
+        const textEnviar = document.getElementById('text-enviar');
+        const spinner = document.getElementById('spinner');
+
+        // Abrir selector de archivos al hacer clic en el área
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        // Detectar cuando se selecciona un archivo
+        fileInput.addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                fileNameDisplay.innerHTML = `<i class="fas fa-check-circle"></i> Archivo listo: ${this.files[0].name}`;
+                dropZone.classList.add('active');
+                uploadText.style.display = "none";
+                uploadSubtext.style.display = "none";
+            }
+        });
+
+        // Lógica de envío con animación
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Validar si hay archivo antes de "enviar"
+            if (!fileInput.files.length) {
+                alert("Por favor, adjunta tu CV antes de postularte.");
+                return;
+            }
+
+            btnSubmit.disabled = true;
+            textEnviar.innerText = "Procesando Solicitud...";
+            spinner.style.display = "inline-block";
+
+            setTimeout(() => {
+                alert("¡Felicidades! Tu postulación ha sido enviada correctamente.");
+                window.location.href = "1. indexmenu.html"; 
+            }, 2500);
+        });
+
+
+// Para que al presionar enter se genere la etiqueta
+const tagInput = document.getElementById('tag-input');
+const tagsContainer = document.getElementById('tags-container');
+const hiddenInput = document.getElementById('conocimientos-hidden');
+let tags = [];
+
+tagInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ',') {
+        e.preventDefault();
+        const value = tagInput.value.trim().replace(/,/g, '');
+        
+        if (value !== "" && !tags.includes(value)) {
+            addTag(value);
+            tagInput.value = "";
+        }
+    }
+});
+
+function addTag(text) {
+    tags.push(text);
+    
+    const tagDiv = document.createElement('div');
+    tagDiv.classList.add('tag');
+    tagDiv.innerHTML = `
+        ${text}
+        <i class="fas fa-times" onclick="removeTag('${text}', this)"></i>
+    `;
+    
+    // Insertar la etiqueta antes del input
+    tagsContainer.insertBefore(tagDiv, tagInput);
+    updateHiddenInput();
+}
+
+function removeTag(text, element) {
+    tags = tags.filter(tag => tag !== text);
+    element.parentElement.remove();
+    updateHiddenInput();
+}
+
+function updateHiddenInput() {
+    // Esto guarda las etiquetas separadas por comas
+    hiddenInput.value = tags.join(',');
+}
+
+    </script>
+</body>
+</html>
