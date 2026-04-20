@@ -1,0 +1,5 @@
+{
+  "builds": [
+    { "src": "/Login/1. Buscador.html", "use": "@vercel/static" }
+  ]
+}
