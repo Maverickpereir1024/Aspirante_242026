@@ -1,126 +1,88 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
+<html lang="es"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mark Nic Reclutamiento</title>
+    <title>MarkNic - Encuentra tu Empleo</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-
 <body>
-    <header class="main-navbar">
-        <div class="nav-container">
-            <h1 class="marknic-logo-small">
-                <span class="text-white">Mark</span><span class="text-purple">Nic</span>
-            </h1>
 
-            <div class="user-menu-container">
-                <div class="user-icon">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="dropdown-window">
-                    <p class="dropdown-header">Ingresa y encuentra empleo con una mejor experiencia</p>
-                    <a href="/Login/3. Iniciar Sesion.html"><button class="btn-ingresar">Inicia Sesión</button></a>
-                    <a href="/Login/4. Registrarse.html"><button class="btn-registrar">Regístrate</button></a>
-                    <hr class="divider">
-                    <ul class="dropdown-list">
-                        <li><i class="fas fa-paper-plane"></i> Mis postulaciones</li>
-                        <li><i class="fas fa-heart"></i> Mis favoritos</li>
-                    </ul>
-                </div>
+    <div class="card-container">
+        
+        <div class="top-section">
+            <div class="header-content">
+                <img src="Logo Temp.png" alt="Icono MarkNic" class="world-icon">
+                <h1 class="marknic-logo">
+                    <span class="text-white">Mark</span><span class="text-purple">Nic</span>
+                </h1>
             </div>
-        </div>
-    </header>
 
-    <main class="content-wrapper">
-
-        <div id="interview-notification" class="important-banner">
-            <div class="banner-content">
-                <div class="banner-text">
-                    <i class="fas fa-calendar-check"></i>
-                    <span>¡Tienes una entrevista con <strong>Castillo solutions</strong>!</span>
-                </div>
-                <button onclick="openInterviewModal()" class="btn-ver-cita">Ver detalles</button>
+            <div class="curve-divider">
+                <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+                    <path fill="#ffffff" d="M0,192L48,208C96,224,192,256,288,256C384,256,480,224,576,224C672,224,768,256,864,256C960,256,1056,224,1152,202.7C1248,181,1344,171,1392,165.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                </svg>
             </div>
         </div>
 
-        <div class="mobile-filters-container">
-            <div class="mobile-filters">
-                <div class="filter-group">
-                    <button class="filter-chip" onclick="toggleDropdown(event, 'drop-exp')">
-                        Experiencia <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div id="drop-exp" class="filter-dropdown">
-                        <label><input type="checkbox"> 1 a 3 años</label>
-                        <label><input type="checkbox"> 3 a 5 años</label>
+        <div class="main-content">
+            <h6 class="section-title">Encuentra tu trabajo ideal</h6>
+            
+            <form class="search-form" id="formBusqueda">
+                <div class="search-inputs">
+                    <div class="input-group">
+                        <i class="fa fa-briefcase input-icon"></i>
+                        <input type="text" id="cargo" placeholder="Cargo o área" required="">
+                    </div>
+                    <div class="input-group">
+                        <i class="fa fa-map-marker-alt input-icon"></i>
+                        <input type="text" id="lugar" placeholder="Lugar (Ej: Managua)" required="">
                     </div>
                 </div>
-                </div>
-        </div>
+                <button type="button" class="search-button" onclick="validarYEnviar()">
+                    <i class="fa fa-search"></i> Buscar empleos
+                </button>
+            </form>
 
-        <section class="dashboard-container">
-            <h1>Mis Postulaciones</h1>
-            <div id="lista-postulaciones">
-                <div class="card-postulacion">
-                    <div class="info-trabajo">
-                        <h3 class="puesto">Aspirante Web</h3>
-                        <p class="empresa">MarkNic</p>
+            <div class="extra-content">
+                <div class="categories-grid">
+                    <div class="cat-item"><i class="fa fa-laptop-code"></i><span>IT</span></div>
+                    <div class="cat-item"><i class="fa fa-headset"></i><span>Call Center</span></div>
+                    <div class="cat-item"><i class="fa fa-bolt"></i><span>Eléctrica</span></div>
+                    <div class="cat-item"><i class="fa fa-shopping-cart"></i><span>Ventas</span></div>
+                </div>
+
+                <div class="recent-jobs">
+                    <h3>Anuncios de empleos recientes</h3>
+                    
+                    <div class="job-card">
+                        <div class="job-info">
+                            <strong>Ejecutivo de Soporte Técnico</strong>
+                            <p>Maverick, S.A. - Managua, Nicaragua</p>
+                        </div>
+                        <span class="job-badge bg-new">Nuevo</span>
                     </div>
-                    <div class="stepper">
-                        <div class="step active" data-status="recibido">
-                            <div class="circle">1</div>
-                            <span>Recibido</span>
+                    
+                    <div class="job-card">
+                        <div class="job-info">
+                            <strong>Pasante de Sistemas</strong>
+                            <p>Castillo Solutions - Matagalpa, Nicaragua</p>
                         </div>
-                        <div class="line active"></div>
-                        <div class="step" data-status="revision">
-                            <div class="circle">2</div>
-                            <span>En Revisión</span>
-                        </div>
-                        <div class="line"></div>
-                        <div class="step" data-status="entrevista">
-                            <div class="circle">3</div>
-                            <button onclick="openInterviewModal()" class="btn-step-link">Entrevista</button>
-                        </div>
+                        <span class="job-badge bg-urgent">Destacado</span>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section class="jobs-feed">
-            <h3 class="section-title">10 Ofertas encontradas</h3>
-            <div class="job-card">
-                <div class="card-header">
-                    <h4>Ejecutivo de Soporte Tecnico</h4>
-                    <i class="fas fa-ellipsis-v"></i>
-                </div>
-                <p class="company"><i class="fas fa-check-circle"></i> Maverick, S.A.</p>
-                <p class="location"><i class="fas fa-map-marker-alt"></i> Managua, Nicaragua</p>
-                <div class="card-footer">
-                    <span class="tag">Hace 9 días</span>
-                    <button class="btn-details">Ver detalles</button>
-                </div>
-            </div>
-            </section>
-    </main>
-
-    <div id="interview-modal" class="modal-overlay">
-        <div class="modal-card">
-            <div class="modal-header-green">
-                <i class="fas fa-award"></i>
-                <h2>¡Has sido seleccionado!</h2>
-            </div>
-            <div class="modal-body">
-                <p>La Empresa <strong>Castillo solutions</strong> desea agendar una videollamada.</p>
-                <div class="modal-footer">
-                    <button class="btn-decline" onclick="closeModal()">Luego</button>
-                    <button class="btn-accept" onclick="goToLobby()">Aceptar</button>
-                </div>
-            </div>
         </div>
+
+        <div class="info-banner">
+            <p>Crea una cuenta o regístrate para recibir recomendaciones personalizadas.</p>
+        </div>
+
+        <footer>
+            <small>© 2026 MarkNic</small>
+        </footer>
     </div>
 
-    <script src="/Inicio/6. index.js"></script>
-</body>
-</html>
+    <script src="5. Valibusq.js"></script>
+
+
+</body></html>
