@@ -1,11 +1,7 @@
 <!DOCTYPE html>
-
 <html lang="es">
-
-<head>
-
+<head>=
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Mark Nic Reclutamiento</title>
@@ -22,8 +18,6 @@
 
     el usuario puede aceptar o rechazar la invitacion, si acepta se le redirige a una sala de espera. -->
 
-
-
     <div id="interview-notification" class="important-banner">
 
         <div class="banner-content">
@@ -38,7 +32,7 @@
 
     </div>
 
-    
+
 
     <div id="interview-modal" class="modal-overlay">
 
@@ -71,7 +65,6 @@
 
 
                 <div id="warning-text"
-
                     style="display: none; color: #dc2626; background: #fee2e2; padding: 10px; border-radius: 8px; margin-top: 15px; font-size: 0.85rem; border: 1px solid #fecaca;">
 
                     <i class="fas fa-exclamation-triangle"></i>
@@ -136,59 +129,59 @@
 
     </div>
 
-    
+
 
     <div>
 
         <h1 class="marknic-logo">
 
-             <span class="text-white">Mark</span><span class="text-purple">Nic</span>
+            <span class="text-white">Mark</span><span class="text-purple">Nic</span>
 
         </h1>
 
     </div>
 
-    
+
 
     <header class="Contenedor-usuario">
 
         <div class="user-menu-container">
 
-             <div class="user-icon">
+            <div class="user-icon">
 
                 <i class="fas fa-user"></i>
 
             </div>
 
-        
 
-        <div class="dropdown-window">
 
-            <p class="dropdown-header">Ingresa y encuentra empleo con una mejor experiencia</p>
+            <div class="dropdown-window">
 
-            <a href="/Login/3. Iniciar Sesion.html">
+                <p class="dropdown-header">Ingresa y encuentra empleo con una mejor experiencia</p>
 
-                <button class="btn-ingresar">Inicia Sesion </button>
+                <a href="/Login/3. Iniciar Sesion.html">
 
-            </a>
+                    <button class="btn-ingresar">Inicia Sesion </button>
 
-            
+                </a>
 
-            <a href="/Login/4. Registrarse.html">
 
-                 <button class="btn-registrar"> Registrate </button>
 
-            </a>
+                <a href="/Login/4. Registrarse.html">
 
-            
+                    <button class="btn-registrar"> Registrate </button>
 
-            <hr class="divider">
+                </a>
 
-            <ul class="dropdown-list">
 
-                <li><i class="fas fa-paper-plane"></i> Mis postulaciones</li>
 
-                <li><i class="fas fa-heart"></i> Mis favoritos</li>
+                <hr class="divider">
+
+                <ul class="dropdown-list">
+
+                    <li><i class="fas fa-paper-plane"></i> Mis postulaciones</li>
+
+                    <li><i class="fas fa-heart"></i> Mis favoritos</li>
 
                 </ul>
 
@@ -202,19 +195,85 @@
 
     <div class="mobile-filters">
 
-    <div class="filter-group">
+        <div class="filter-group">
 
-        <button class="filter-chip" onclick="toggleDropdown(event, 'drop-exp')">
+            <button class="filter-chip" onclick="toggleDropdown(event, 'drop-exp')">
 
-            Experiencia <i class="fas fa-chevron-down"></i>
+                Experiencia <i class="fas fa-chevron-down"></i>
 
-        </button>
+            </button>
 
-        <div id="drop-exp" class="filter-dropdown">
+            <div id="drop-exp" class="filter-dropdown">
 
-            <label><input type="checkbox"> 1 a 3 años</label>
+                <label><input type="checkbox"> 1 a 3 años</label>
 
-            <label><input type="checkbox"> 3 a 5 años</label>
+                <label><input type="checkbox"> 3 a 5 años</label>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="filter-group">
+
+            <button class="filter-chip" onclick="toggleDropdown(event, 'drop-sal')">
+
+                Salario <i class="fas fa-chevron-down"></i>
+
+            </button>
+
+            <div id="drop-sal" class="filter-dropdown">
+
+                <label><input type="radio" name="sal"> $400 - $600</label>
+
+                <label><input type="radio" name="sal"> $600 - $900</label>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="filter-group">
+
+            <button class="filter-chip" onclick="toggleDropdown(event, 'drop-loc')">
+
+                Ubicación <i class="fas fa-chevron-down"></i>
+
+            </button>
+
+            <div id="drop-loc" class="filter-dropdown">
+
+                <label><input type="checkbox"> Managua</label>
+
+                <label><input type="checkbox"> Departamental</label>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="filter-group">
+
+            <button class="filter-chip" onclick="toggleDropdown(event, 'drop-jor')">
+
+                Jornada <i class="fas fa-chevron-down"></i>
+
+            </button>
+
+            <div id="drop-jor" class="filter-dropdown">
+
+                <label><input type="checkbox"> Tiempo Completo</label>
+
+                <label><input type="checkbox"> Trabajo Remoto</label>
+
+                <label><input type="checkbox"> Medio Tiempo</label>
+
+                <label><input type="checkbox"> Pasantias</label>
+
+            </div>
 
         </div>
 
@@ -222,475 +281,410 @@
 
 
 
-    <div class="filter-group">
+    </section>
 
-        <button class="filter-chip" onclick="toggleDropdown(event, 'drop-sal')">
+    <section class="dashboard-container">
 
-            Salario <i class="fas fa-chevron-down"></i>
+        <h1>Mis Postulaciones</h1>
 
-        </button>
+        <br>
 
-        <div id="drop-sal" class="filter-dropdown">
-
-            <label><input type="radio" name="sal"> $400 - $600</label>
-
-            <label><input type="radio" name="sal"> $600 - $900</label>
+        <div id="lista-postulaciones">
 
         </div>
 
-    </div>
+    </section>
 
 
 
-    <div class="filter-group">
+    <template id="template-postulacion">
 
-        <button class="filter-chip" onclick="toggleDropdown(event, 'drop-loc')">
+        <div class="card-postulacion">
 
-            Ubicación <i class="fas fa-chevron-down"></i>
+            <div class="info-trabajo">
 
-        </button>
+                <h3 class="puesto">Aspirante Web</h3>
 
-        <div id="drop-loc" class="filter-dropdown">
+                <p class="empresa">MarkNic</p>
 
-            <label><input type="checkbox"> Managua</label>
+            </div>
 
-            <label><input type="checkbox"> Departamental</label>
+
+
+            <div class="stepper">
+
+                <div class="step" data-status="recibido">
+
+                    <div class="circle">1</div>
+
+                    <span>Recibido</span>
+
+                </div>
+
+                <div class="line"></div>
+
+                <div class="step" data-status="revision">
+
+                    <div class="circle">2</div>
+
+                    <span>En Revisión</span>
+
+                </div>
+
+                <div class="line"></div>
+
+                <div class="step" data-status="entrevista">
+
+                    <div class="circle">3</div>
+
+                    <button onclick="openInterviewModal()" class "btn-step-link">Entrevista</button>
+
+                </div>
+
+                <div class="line"></div>
+
+                <div class="stepcontratado" data-status="contratado">
+
+                    <div class="circlecontrat">4</div>
+
+                    <span>Contratado</span>
+
+                </div>
+
+            </div>
 
         </div>
 
-    </div>
+    </template>
 
 
 
-    <div class="filter-group">
+    <section class="jobs-feed">
 
-        <button class="filter-chip" onclick="toggleDropdown(event, 'drop-jor')">
+        <h3 class="section-title">10 Ofertas encontradas</h3>
 
-            Jornada <i class="fas fa-chevron-down"></i>
 
-        </button>
 
-        <div id="drop-jor" class="filter-dropdown">
+        <div class="job-card">
 
-            <label><input type="checkbox"> Tiempo Completo</label>
+            <div class="card-header">
 
-            <label><input type="checkbox"> Trabajo Remoto</label>
+                <h4>Ejecutivo de Soporte Tecnico</h4>
 
-            <label><input type="checkbox"> Medio Tiempo</label>
+                <i class="fas fa-ellipsis-v"></i>
 
-            <label><input type="checkbox"> Pasantias</label>
+            </div>
+
+
+
+            <p class="company"><i class="fas fa-check-circle"></i> Maverick, S.A.</p>
+
+            <p class="location"><i class="fas fa-map-marker-alt"></i> Managua, Nicaragua</p>
+
+
+
+            <div class="card-footer">
+
+                <span class="tag">Hace 9 días</span>
+
+                <a href="2. indexoferta1.html">
+
+                    <button class="btn-details">Ver detalles</button>
+
+                </a>
+
+            </div>
 
         </div>
 
-    </div>
-
-</div>
 
 
+        <div class="job-card">
 
-        </section>
+            <div class="card-header">
 
-        <section class="dashboard-container">
+                <h4>Pasante de Sistemas</h4>
 
-            <h1>Mis Postulaciones</h1>
-
-            <br>
-
-            <div id="lista-postulaciones">
+                <i class="fas fa-ellipsis-v"></i>
 
             </div>
 
-        </section>
+
+
+            <p class="company"><i class="fas fa-check-circle"></i> Castillo Solutions</p>
+
+            <p class="location"><i class="fas fa-laptop-house"></i> Trabajo Remoto</p>
 
 
 
-        <template id="template-postulacion">
+            <div class="card-footer">
 
-            <div class="card-postulacion">
+                <span class="tag">Nuevo</span>
 
-                <div class="info-trabajo">
+                <a href="3. indexoferta2.html">
 
-                    <h3 class="puesto">Aspirante Web</h3>
+                    <button class="btn-details">Ver detalles</button>
 
-                    <p class="empresa">MarkNic</p>
-
-                </div>
-
-
-
-                <div class="stepper">
-
-                    <div class="step" data-status="recibido">
-
-                        <div class="circle">1</div>
-
-                        <span>Recibido</span>
-
-                    </div>
-
-                    <div class="line"></div>
-
-                    <div class="step" data-status="revision">
-
-                        <div class="circle">2</div>
-
-                        <span>En Revisión</span>
-
-                    </div>
-
-                    <div class="line"></div>
-
-                    <div class="step" data-status="entrevista">
-
-                        <div class="circle">3</div>
-
-                        <button onclick="openInterviewModal()" class "btn-step-link">Entrevista</button>
-
-                    </div>
-
-                    <div class="line"></div>
-
-                    <div class="stepcontratado" data-status="contratado">
-
-                        <div class="circlecontrat">4</div>
-
-                        <span>Contratado</span>
-
-                    </div>
-
-                </div>
+                </a>
 
             </div>
 
-        </template>
+        </div>
 
 
 
-        <section class="jobs-feed">
+        <div class="job-card">
 
-            <h3 class="section-title">10 Ofertas encontradas</h3>
+            <div class="card-header">
 
+                <h4>Analista de Datos Jr.</h4>
 
-
-            <div class="job-card">
-
-                <div class="card-header">
-
-                    <h4>Ejecutivo de Soporte Tecnico</h4>
-
-                    <i class="fas fa-ellipsis-v"></i>
-
-                </div>
-
-
-
-                <p class="company"><i class="fas fa-check-circle"></i> Maverick, S.A.</p>
-
-                <p class="location"><i class="fas fa-map-marker-alt"></i> Managua, Nicaragua</p>
-
-
-
-                <div class="card-footer">
-
-                    <span class="tag">Hace 9 días</span>
-
-                    <a href="2. indexoferta1.html">
-
-                        <button class="btn-details">Ver detalles</button>
-
-                    </a>
-
-                </div>
+                <i class="fas fa-ellipsis-v"></i>
 
             </div>
 
 
 
-            <div class="job-card">
+            <p class="company"><i class="fas fa-check-circle"></i> Kenneth Lopez Corporation</p>
 
-                <div class="card-header">
+            <p class="location"><i class="fas fa-map-marker-alt"></i> Chinandega, Nicaragua</p>
 
-                    <h4>Pasante de Sistemas</h4>
+            <div class="card-footer">
 
-                    <i class="fas fa-ellipsis-v"></i>
+                <span class="tag">Hace 2 días</span>
 
-                </div>
+                <a href="4. indexoferta3.html">
 
+                    <button class="btn-details">Ver detalles</button>
 
+                </a>
 
-                <p class="company"><i class="fas fa-check-circle"></i> Castillo Solutions</p>
+            </div>
 
-                <p class="location"><i class="fas fa-laptop-house"></i> Trabajo Remoto</p>
+        </div>
 
+        <div class="job-card">
 
+            <div class="card-header">
 
-                <div class="card-footer">
+                <h4>Desarollador Web Jr.</h4>
 
-                    <span class="tag">Nuevo</span>
-
-                    <a href="3. indexoferta2.html">
-
-                        <button class="btn-details">Ver detalles</button>
-
-                    </a>
-
-                </div>
+                <i class="fas fa-ellipsis-v"></i>
 
             </div>
 
 
 
-            <div class="job-card">
+            <p class="company"><i class="fas fa-check-circle"></i> Loudness S.A</p>
 
-                <div class="card-header">
+            <p class="location"><i class="fas fa-map-marker-alt"></i> Jinotega, Nicaragua</p>
 
-                    <h4>Analista de Datos Jr.</h4>
+            <div class="card-footer">
 
-                    <i class="fas fa-ellipsis-v"></i>
+                <span class="tag">Hace 5 días</span>
 
-                </div>
+                <a href="4.indexoferta4.html">
 
+                    <button class="btn-details">Ver detalles</button>
 
-
-                <p class="company"><i class="fas fa-check-circle"></i> Kenneth Lopez Corporation</p>
-
-                <p class="location"><i class="fas fa-map-marker-alt"></i> Chinandega, Nicaragua</p>
-
-                <div class="card-footer">
-
-                    <span class="tag">Hace 2 días</span>
-
-                    <a href="4. indexoferta3.html">
-
-                        <button class="btn-details">Ver detalles</button>
-
-                    </a>
-
-                </div>
+                </a>
 
             </div>
 
-            <div class="job-card">
+        </div>
 
-                <div class="card-header">
+        <div class="job-card">
 
-                    <h4>Desarollador Web Jr.</h4>
+            <div class="card-header">
 
-                    <i class="fas fa-ellipsis-v"></i>
+                <h4>Consultor de Ciberseguridad</h4>
 
-                </div>
-
-
-
-                <p class="company"><i class="fas fa-check-circle"></i> Loudness S.A</p>
-
-                <p class="location"><i class="fas fa-map-marker-alt"></i> Jinotega, Nicaragua</p>
-
-                <div class="card-footer">
-
-                    <span class="tag">Hace 5 días</span>
-
-                    <a href="4.indexoferta4.html">
-
-                        <button class="btn-details">Ver detalles</button>
-
-                    </a>
-
-                </div>
+                <i class="fas fa-ellipsis-v"></i>
 
             </div>
 
-             <div class="job-card">
-
-                <div class="card-header">
-
-                    <h4>Consultor de Ciberseguridad</h4>
-
-                    <i class="fas fa-ellipsis-v"></i>
-
-                </div>
 
 
+            <p class="company"><i class="fas fa-check-circle"></i> CiberGuardia S.A</p>
 
-                <p class="company"><i class="fas fa-check-circle"></i> CiberGuardia S.A</p>
+            <p class="location"><i class="fas fa-map-marker-alt"></i> León, Nicaragua</p>
 
-                <p class="location"><i class="fas fa-map-marker-alt"></i> León, Nicaragua</p>
+            <div class="card-footer">
 
-                <div class="card-footer">
+                <span class="tag">Hace 10 días</span>
 
-                    <span class="tag">Hace 10 días</span>
+                <a href="5.indexoferta5.html">
 
-                    <a href="5.indexoferta5.html">
+                    <button class="btn-details">Ver detalles</button>
 
-                        <button class="btn-details">Ver detalles</button>
-
-                    </a>
-
-                </div>
+                </a>
 
             </div>
 
-            </div>
+        </div>
+
+        </div>
+
+        </div>
+
+        <div class="job-card">
+
+            <div class="card-header">
+
+                <h4>Director de diseño UI/UX</h4>
+
+                <i class="fas fa-ellipsis-v"></i>
 
             </div>
 
-             <div class="job-card">
-
-                <div class="card-header">
-
-                    <h4>Director de diseño UI/UX</h4>
-
-                    <i class="fas fa-ellipsis-v"></i>
-
-                </div>
 
 
+            <p class="company"><i class="fas fa-check-circle"></i> Vértice Digital Studio</p>
 
-                <p class="company"><i class="fas fa-check-circle"></i> Vértice Digital Studio</p>
+            <p class="location"><i class="fas fa-laptop-house"></i> Trabajo Remoto</p>
 
-                <p class="location"><i class="fas fa-laptop-house"></i> Trabajo Remoto</p>
+            <div class="card-footer">
 
-                <div class="card-footer">
+                <span class="tag">Hace 9 días</span>
 
-                    <span class="tag">Hace 9 días</span>
+                <a href="6.indexoferta6.html">
 
-                    <a href="6.indexoferta6.html">
+                    <button class="btn-details">Ver detalles</button>
 
-                        <button class="btn-details">Ver detalles</button>
-
-                    </a>
-
-                </div>
+                </a>
 
             </div>
 
-            <div class="job-card">
+        </div>
 
-                <div class="card-header">
+        <div class="job-card">
 
-                    <h4>Especialista en Infraestructura Cloud</h4>
+            <div class="card-header">
 
-                    <i class="fas fa-ellipsis-v"></i>
+                <h4>Especialista en Infraestructura Cloud</h4>
 
-                </div>
-
-
-
-                <p class="company"><i class="fas fa-check-circle"></i> Vértice Digital Studio</p>
-
-               <p class="location"><i class="fas fa-map-marker-alt"></i> Managua, Nicaragua</p>
-
-                <div class="card-footer">
-
-                    <span class="tag">Hace 13 días</span>
-
-                    <a href="7.indexoferta7.html">
-
-                        <button class="btn-details">Ver detalles</button>
-
-                    </a>
-
-                </div>
+                <i class="fas fa-ellipsis-v"></i>
 
             </div>
 
-            </div>
-
-            <div class="job-card">
-
-                <div class="card-header">
-
-                    <h4>Administrador de base de datos (DBA)</h4>
-
-                    <i class="fas fa-ellipsis-v"></i>
-
-                </div>
 
 
+            <p class="company"><i class="fas fa-check-circle"></i> Vértice Digital Studio</p>
 
-                <p class="company"><i class="fas fa-check-circle"></i> DataCore Solutions Nicaragua</p>
+            <p class="location"><i class="fas fa-map-marker-alt"></i> Managua, Nicaragua</p>
 
-               <p class="location"><i class="fas fa-map-marker-alt"></i> León, Nicaragua</p>
+            <div class="card-footer">
 
-                <div class="card-footer">
+                <span class="tag">Hace 13 días</span>
 
-                    <span class="tag">Hace 3 días</span>
+                <a href="7.indexoferta7.html">
 
-                    <a href="8. indexoferta8.html">
+                    <button class="btn-details">Ver detalles</button>
 
-                        <button class="btn-details">Ver detalles</button>
-
-                    </a>
-
-                </div>
+                </a>
 
             </div>
 
-            <div class="job-card">
+        </div>
 
-                <div class="card-header">
+        </div>
 
-                    <h4>Especialista en Marketing Digital</h4>
+        <div class="job-card">
 
-                    <i class="fas fa-ellipsis-v"></i>
+            <div class="card-header">
 
-                </div>
+                <h4>Administrador de base de datos (DBA)</h4>
 
-
-
-                <p class="company"><i class="fas fa-check-circle"></i> NovaMarketing</p>
-
-               <p class="location"><i class="fas fa-map-marker-alt"></i> Chinandega, Nicaragua</p>
-
-                <div class="card-footer">
-
-                    <span class="tag">Hace 6 días</span>
-
-                    <a href="9. indexoferta9.html">
-
-                        <button class="btn-details">Ver detalles</button>
-
-                    </a>
-
-                </div>
+                <i class="fas fa-ellipsis-v"></i>
 
             </div>
 
-            <div class="job-card">
-
-                <div class="card-header">
-
-                    <h4>Administrador de redes</h4>
-
-                    <i class="fas fa-ellipsis-v"></i>
-
-                </div>
 
 
+            <p class="company"><i class="fas fa-check-circle"></i> DataCore Solutions Nicaragua</p>
 
-                <p class="company"><i class="fas fa-check-circle"></i> NetLink Global Nicaragua</p>
+            <p class="location"><i class="fas fa-map-marker-alt"></i> León, Nicaragua</p>
 
-               <p class="location"><i class="fas fa-map-marker-alt"></i> Matagalpa, Nicaragua</p>
+            <div class="card-footer">
 
-                <div class="card-footer">
+                <span class="tag">Hace 3 días</span>
 
-                    <span class="tag">Nuevo</span>
+                <a href="8. indexoferta8.html">
 
-                    <a href="10.indexoferta10.html">
+                    <button class="btn-details">Ver detalles</button>
 
-                        <button class="btn-details">Ver detalles</button>
-
-                    </a>
-
-                </div>
+                </a>
 
             </div>
 
-        </section>
+        </div>
+
+        <div class="job-card">
+
+            <div class="card-header">
+
+                <h4>Especialista en Marketing Digital</h4>
+
+                <i class="fas fa-ellipsis-v"></i>
+
+            </div>
+
+
+
+            <p class="company"><i class="fas fa-check-circle"></i> NovaMarketing</p>
+
+            <p class="location"><i class="fas fa-map-marker-alt"></i> Chinandega, Nicaragua</p>
+
+            <div class="card-footer">
+
+                <span class="tag">Hace 6 días</span>
+
+                <a href="9. indexoferta9.html">
+
+                    <button class="btn-details">Ver detalles</button>
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="job-card">
+
+            <div class="card-header">
+
+                <h4>Administrador de redes</h4>
+
+                <i class="fas fa-ellipsis-v"></i>
+
+            </div>
+
+
+
+            <p class="company"><i class="fas fa-check-circle"></i> NetLink Global Nicaragua</p>
+
+            <p class="location"><i class="fas fa-map-marker-alt"></i> Matagalpa, Nicaragua</p>
+
+            <div class="card-footer">
+
+                <span class="tag">Nuevo</span>
+
+                <a href="10.indexoferta10.html">
+
+                    <button class="btn-details">Ver detalles</button>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
 
     </div>
 
 </body>
 
 <script src="6. index.js"></script>
+
 </html>
