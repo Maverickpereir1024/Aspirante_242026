@@ -1422,24 +1422,14 @@ flex-direction: row; /* Los pone en fila */
 .btn-step-link {
 
     background: none;
-
     border: none;
-
     padding: 0;
-
-    margin: 0;
-
     font-family: inherit;
-
-    font-size: inherit;
-
-    color: #6b7280; /* Color gris suave original */
-
+    font-size: 9px;
     cursor: pointer;
-
     text-decoration: underline; /* Subrayado para indicar que es clickeable */
-
     transition: color 0.3s ease;
+    font-weight: bold;
 
 }
 
