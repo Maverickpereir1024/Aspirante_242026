@@ -69,6 +69,8 @@ body {
 
 
 
+
+
 .banner-content {
 
     display: flex;
@@ -492,12 +494,12 @@ body {
 .Contenedor-usuario {
 
     display: flex;
-
+    position: fixed;
     justify-content:right; /* Logo a la izquierda, icono-Usuario a la derecha */
 
     align-items: center;
 
-    padding: 10px 5% ; /* El 5% evita que se arrincone en pantallas grandes */
+    padding: 10px 15px ; /* El 5% evita que se arrincone en pantallas grandes */
 
     background-color: #ffffff;
 
@@ -989,14 +991,26 @@ animation: fadeInSlide 0.2s ease forwards; /* Animación suave */
 
 /* En móviles, ocultamos las líneas si estorban o las hacemos pequeñas */
 
+/* Esto hará que los 4 pasos quepan en una sola línea sin amontonarse */
 @media (max-width: 480px) {
-
-    .line { display: none; }
-
-    .step { flex: 1 1 40%; margin-bottom: 15px; } /* Dos por fila en móvil */
-
+    .line { 
+        display: block; /* No las ocultes, solo hazlas cortas */
+        flex: 0.2; 
+    }
+    .step { 
+        flex: 1; 
+        margin-bottom: 0; /* Quita el margen que los bajaba */
+    }
+    .step span {
+        font-size: 9px; /* Letra más pequeña para que quepa el texto */
+        display: block;
+    }
+    .circle {
+        width: 20px; /* Círculos un poco más pequeños para móvil */
+        height: 20px;
+        font-size: 10px;
+    }
 }
-
 
 
 .step {
