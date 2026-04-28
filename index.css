@@ -5,7 +5,7 @@
     padding: 0;
 }
 
-body {
+html, body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background-color: #f0f2f5;
     display: flex;
@@ -27,7 +27,7 @@ body {
 
 /* --- ZONA VERDE (TOP) --- */
 .top-section {
-    background-color: #088e62; 
+    background-color: #0F172A; 
     padding: 60px 20px 100px 20px;
     text-align: center;
     position: relative;
