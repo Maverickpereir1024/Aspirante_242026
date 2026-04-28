@@ -84,7 +84,7 @@ html, body {
 }
 
 .modal-header-green {
-    background: #10b981;
+    background: #147904;
     /* Verde MarkNic */
     color: white;
     padding: 30px;
@@ -458,6 +458,45 @@ html, body {
     }
 }
 
+.search-container {
+    display: flex;
+    gap: 10px;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+#searchInput {
+    flex: 1;
+    padding: 12px 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    outline: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+#searchInput:focus {
+    border-color: #147904; /* El azul cian de tu nuevo logo */
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1);
+}
+
+.btn-search {
+    padding: 12px 25px;
+    background: #147904; /* verde oscuro moderno */
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-search:hover {
+    background: #1e293b;
+    transform: translateY(-2px);
+}
+
 /* BUSCADOR Y FILTROS */
 .search-section {
    background: var(--white);
@@ -626,7 +665,7 @@ html, body {
 }
 
 .circlecontrat.active {
-    background: #10b981;
+    background: #147904;
     color: white;
 }
 
@@ -714,7 +753,7 @@ html, body {
 }
 
 .btn-details {
-    background: #10b981;
+    background: #147904;
     color: white;
     border: none;
     padding: 8px 15px;
@@ -744,7 +783,7 @@ html, body {
 }
 
 .btn-details1 {
-    background: #10b981;
+    background: #147904;
     color: white;
     border: none;
     padding: 8px 15px;
@@ -838,9 +877,6 @@ html, body {
 }
 
 .step[data-status="entrevista"] .btn-step-link {
-    color: #10b981;
+    color: #147904;
 }
 
-/* --- CONTINUACIÓN DEL CÓDIGO ORIGINAL --- */
-/* Aquí irían todas las líneas adicionales de tu CSS original */
-/* que no mostré anteriormente para no saturar, pero que se mantienen intactas */

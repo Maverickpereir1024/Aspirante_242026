@@ -279,8 +279,6 @@
 
     </div>
 
-
-
     </section>
 
     <section class="dashboard-container">
@@ -357,7 +355,17 @@
 
     </template>
 
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Buscar por nombre de vacante (ej. Soporte)...">
+    <button onclick="buscarVacantes()" class="btn-search">
+        <i class="fa fa-search"></i> Buscar
+    </button>
+</div>
 
+<div id="noResults" style="display: none; text-align: center; padding: 20px; color: #64748b;">
+    <img src="https://cdn-icons-png.flaticon.com/512/6134/6134065.png" width="80" style="opacity: 0.5;">
+    <p>No hay nada relacionado a esta búsqueda.</p>
+</div>
 
     <section class="jobs-feed">
 

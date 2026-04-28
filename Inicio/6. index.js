@@ -163,3 +163,39 @@ document.addEventListener('click', function(e) {
         }
     });
 });
+
+
+
+// buscador
+function buscarVacantes() {
+    // 1. Obtener el texto del buscador y pasarlo a minúsculas
+    let input = document.getElementById('searchInput').value.toLowerCase();
+    
+    // 2. Seleccionar todas las tarjetas de trabajo
+    let tarjetas = document.getElementsByClassName('job-card');
+    let mensajeNoHay = document.getElementById('noResults');
+    let contadorEncontrados = 0;
+
+    // 3. Recorrer cada tarjeta
+    for (let i = 0; i < tarjetas.length; i++) {
+        // Buscamos el texto dentro del strong (título del puesto)
+        let titulo = tarjetas[i].getElementsByTagName('h4')[0].innerText.toLowerCase();
+
+        if (titulo.includes(input)) {
+            tarjetas[i].style.display = ""; // Mostrar si coincide
+            contadorEncontrados++;
+        } else {
+            tarjetas[i].style.display = "none"; // Ocultar si no coincide
+        }
+    }
+
+    // 4. Mostrar u ocultar el mensaje de "No hay nada"
+    if (contadorEncontrados === 0) {
+        mensajeNoHay.style.display = "block";
+    } else {
+        mensajeNoHay.style.display = "none";
+    }
+}
+
+// Opcional: Que busque automáticamente mientras escribes
+document.getElementById('searchInput').addEventListener('keyup', buscarVacantes);
