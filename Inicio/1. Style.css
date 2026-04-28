@@ -2,7 +2,7 @@
 :root {
     --primary: #6366f1;
     --secondary: #4f46e5;
-    --bg: #f3f4f6;
+    --bg: #0F172A;
     --white: #ffffff;
     --gray-text: #6b7280;
 }
@@ -257,7 +257,7 @@ html, body {
 }
 
 .text-white {
-    color: #035b02;
+    color: #f2f3f5;
 }
 
 .text-purple {
@@ -531,6 +531,7 @@ html, body {
 
 .mobile-filters {
    display: flex;
+   color: #070707;
     gap: 15px; /* Un poco más de espacio entre ellos */
     width: 100%; /* Ocupa todo el contenedor */
     justify-content: space-between; /* Los distribuye equitativamente */
@@ -556,8 +557,8 @@ html, body {
     border-radius: 12px; /* Un radio un poco más moderno */
     white-space: nowrap;
     font-size: 0.9rem;
-    color: var(--gray-text);
-    cursor: pointer;
+    color: #0e0e0f; /* Blanco azulado muy brillante */
+    font-weight: 600; /* Un poco más de grosor para que se lea mejor */    cursor: pointer;
     transition: all 0.3s ease;
     min-width: 120px; /* Evita que se aplasten demasiado */
 }
@@ -566,6 +567,11 @@ html, body {
     background: var(--primary);
     color: var(--white);
     border-color: var(--primary);
+}
+
+.filter-chip:hover {
+    background: #b7babd;
+    border-color: #6366f1; /* Color púrpura para indicar selección */
 }
 
 .dashboard-container {
@@ -880,3 +886,6 @@ html, body {
     color: #147904;
 }
 
+.dashboard-container {
+    color: #f8f5f5;
+}
