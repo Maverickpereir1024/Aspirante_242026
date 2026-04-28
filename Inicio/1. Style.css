@@ -273,8 +273,8 @@ html, body {
     align-items: center;
     padding: 10px 15px;
     /* El 5% evita que se arrincone en pantallas grandes */
-    background-color: #ffffff;
-    border-bottom: 1px solid #eee;
+    background-color: #0F172A;
+    border-bottom: 1px solid #0F172A;
     top: 0;
     left: 0;
     right: 0;
@@ -327,7 +327,7 @@ html, body {
 }
 
 .user-icon:hover {
-    background-color: #e2e8f0;
+    background-color: #0e0e0e;
 }
 
 /* LA VENTANITA */
