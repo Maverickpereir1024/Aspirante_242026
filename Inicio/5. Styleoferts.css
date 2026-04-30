@@ -246,6 +246,53 @@ body {
     cursor: pointer;
 }
 
+.detalle-vacante {
+    max-width: 800px;
+    padding-left: 10px;
+    padding-right:20px ;
+    line-height: 1.6; /* Aumenta el espacio entre líneas de texto */
+    color: #333;
+}
+
+.titulo-seccion {
+    color: #2e54a5;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    margin-bottom: 1px;
+    border-bottom: 1px solid #eee; /* Una línea más elegante que el <hr> */
+    padding-bottom: 10px;
+}
+
+.info-bloque {
+    margin-bottom: 25px; /* Separa los bloques de Requisitos y Funciones */
+}
+
+.info-bloque h4 {
+    color: #444;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.info-bloque ul {
+    list-style: none; /* Quitamos los puntos básicos */
+    padding-left: 0;
+}
+
+.info-bloque li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px; /* Espacio entre cada punto de la lista */
+}
+
+/* Ponemos un check azul pequeñito en lugar del punto negro */
+.info-bloque li::before {
+    content: "•";
+    color: #2e54a5;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
 /* =========================================
    MEDIA QUERY PARA PC (Pantallas Grandes)
    ========================================= */
