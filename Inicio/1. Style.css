@@ -311,6 +311,41 @@ html, body {
     border-bottom: 1px solid #e2e8f0;
 }
 
+.categories-grid{
+    display: flex;            /* Activa el modo flexbox */
+    justify-content: center;  /* Centra los botones horizontalmente */
+    flex-wrap: wrap;         /* Si no caben, saltan a la siguiente línea */
+    gap: 15px;               /* Espacio entre los botones */
+    width: 100%;             /* Asegura que ocupe todo el ancho disponible */
+    margin: 20px 0;          /* Espacio arriba y abajo si lo necesitas */
+}
+.categories-grid .cat-item {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content:center;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s ease;
+    margin-bottom: 5px;
+}
+
+/* Colores  */
+.categories-grid .cat-item.it { background-color: #2e7d32; }
+.categories-grid .cat-item.pasante { background-color: #455a64; }
+.categories-grid .cat-item.electrica { background-color: #2563eb; }
+.categories-grid .cat-item.ventas { background-color: #6366f1; }
+
+/* Efecto visual al pasar el mouse */
+.categories-grid .cat-item:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
 /* Estilo del circulo de la personita */
 .user-icon {
     width: 45px;
