@@ -4,11 +4,23 @@ function openInterviewModal() {
 }
 
 function showWarning() {
-    const warningDiv = document.getElementById('warning-text');
+const warningDiv = document.getElementById('warning-text');
+    const modal = document.getElementById('interview-modal');
 
-    // Hacemos que el texto de advertencia aparezca con una animación
-    warningDiv.style.display = 'block';
-    warningDiv.style.animation = 'shake 0.5s ease';
+    // Verificamos si la advertencia ya es visible
+    if (warningDiv.style.display === 'none' || warningDiv.style.display === '') {
+        
+        // PRIMER CLIC: Solo mostramos la advertencia
+        warningDiv.style.display = 'block';
+        warningDiv.style.animation = 'shake 0.5s ease';
+        
+        // Opcional: Puedes cambiar el texto del botón a "¿Confirmar?" 
+        // para que el usuario sepa que el siguiente clic es el definitivo.
+        
+    } else {
+        // SEGUNDO CLIC: Como la advertencia ya estaba ahí, cerramos el modal
+        modal.style.display = 'none';
+    }
 }
 
 // Ir al lobby de videollamada
