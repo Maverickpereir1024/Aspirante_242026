@@ -192,8 +192,83 @@
     </header>
 
 
-
     <div class="mobile-filters">
+
+    <div class="filter-group">
+        <button class="filter-chip" onclick="toggleDropdown(event, 'drop-area')">
+            Área <i class="fas fa-chevron-down"></i>
+        </button>
+        <div id="drop-area" class="filter-dropdown">
+            <label><input type="checkbox"> Sistemas</label>
+            <label><input type="checkbox"> Electricidad res/ind</label>
+            <label><input type="checkbox"> Ventas</label>
+            <label><input type="checkbox"> Administración de empresas</label>
+            <label><input type="checkbox"> Atención al cliente</label>
+            <label><input type="checkbox"> Doméstica</label>
+            <label><input type="checkbox"> Mecánico</label>
+        </div>
+    </div>
+
+    <div class="filter-group">
+        <button class="filter-chip" onclick="toggleDropdown(event, 'drop-exp')">
+            Experiencia <i class="fas fa-chevron-down"></i>
+        </button>
+        <div id="drop-exp" class="filter-dropdown">
+            <label><input type="radio" name="exp"> Sin experiencia</label>
+            <label><input type="radio" name="exp"> 1 a 3 años</label>
+            <label><input type="radio" name="exp"> 3 a 5 años</label>
+            <label><input type="radio" name="exp"> Más de 5 años</label>
+        </div>
+    </div>
+
+    <div class="filter-group">
+        <button class="filter-chip" onclick="toggleDropdown(event, 'drop-sal')">
+            Salario <i class="fas fa-chevron-down"></i>
+        </button>
+        <div id="drop-sal" class="filter-dropdown">
+            <label><input type="radio" name="sal"> Menos de $400</label>
+            <label><input type="radio" name="sal"> $400 - $600</label>
+            <label><input type="radio" name="sal"> $600 - $900</label>
+            <label><input type="radio" name="sal"> Más de $900</label>
+        </div>
+    </div>
+
+    <div class="filter-group">
+        <button class="filter-chip" onclick="toggleDropdown(event, 'drop-loc')">
+            Ubicación <i class="fas fa-chevron-down"></i>
+        </button>
+        <div id="drop-loc" class="filter-dropdown">
+            <label><input type="checkbox"> Managua</label>
+            <label><input type="checkbox"> Departamental</label>
+        </div>
+    </div>
+
+    <div class="filter-group">
+        <button class="filter-chip" onclick="toggleDropdown(event, 'drop-mod')">
+            Modalidad <i class="fas fa-chevron-down"></i>
+        </button>
+        <div id="drop-mod" class="filter-dropdown">
+            <label><input type="checkbox"> Presencial</label>
+            <label><input type="checkbox"> Híbrido</label>
+            <label><input type="checkbox"> 100% Remoto</label>
+        </div>
+    </div>
+
+    <div class="filter-group">
+        <button class="filter-chip" onclick="toggleDropdown(event, 'drop-jor')">
+            Jornada <i class="fas fa-chevron-down"></i>
+        </button>
+        <div id="drop-jor" class="filter-dropdown">
+            <label><input type="checkbox"> Tiempo Completo</label>
+            <label><input type="checkbox"> Medio Tiempo</label>
+            <label><input type="checkbox"> Pasantía</label>
+            <label><input type="checkbox"> Por horas / Freelance</label>
+        </div>
+    </div>
+
+</div>
+
+    <!-- <div class="mobile-filters">
 
         <div class="filter-group">
 
@@ -277,7 +352,7 @@
 
         </div>
 
-    </div>
+    </div> -->
 
     </section>
 

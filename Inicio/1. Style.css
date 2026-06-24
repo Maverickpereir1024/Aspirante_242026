@@ -572,6 +572,7 @@ html, body {
    ========================================== */
 .mobile-filters {
     display: flex;
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
     overflow-x: auto; /* Permite deslizar hacia los lados */
     padding: 10px 15px;
@@ -579,7 +580,7 @@ html, body {
     box-sizing: border-box;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch; /* Deslizamiento suave en iPhone */
-    /* flex-wrap: wrap; /* Si no caben, saltan a la siguiente línea */
+    flex-wrap: wrap; /* Si no caben, saltan a la siguiente línea */
     position: relative;
     z-index: 9999;
 
@@ -602,15 +603,17 @@ html, body {
    2. LOS BOTONES (CHIPS)
    ========================================== */
 .filter-chip {
+    width: 100%;
     background: rgba(255, 255, 255, 0.1); /* Blanco casi transparente */
     color: white;
     font-weight: 600;
     border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 8px 18px;
-    border-radius: 25px; /* Bordes bien redondeados */
+    border-radius: 12px; /* Bordes bien redondeados */
     font-size: 0.9rem;
     cursor: pointer;
     display: flex;
+    justify-content: space-between ;
     align-items: center;
     gap: 8px;
     white-space: nowrap; /* Impide que el texto del botón se parta en dos líneas */
@@ -629,6 +632,7 @@ html, body {
     display: none; /* Tu JavaScript lo cambiará a 'flex' o 'block' al tocarlo */
     position: absolute;
     top: 115%; /* Aparece justo un poco por debajo del botón */
+    right: 0; /* Esto hace que el menú mida exactamente el mismo ancho que su botón */
     left: 0;
     
     /* El efecto transparente y elegante */
@@ -638,7 +642,7 @@ html, body {
     border-radius: 12px;
     
     padding: 12px;
-    min-width: 170px; /* Ancho mínimo para que no se vea aplastado */
+    min-width: 100px; /* Ancho mínimo para que no se vea aplastado */
     z-index: 10000; /* Asegura que flote por encima de todo lo demás */
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
     
