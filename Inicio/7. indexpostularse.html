@@ -3,6 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Vacante</title>
+    <link rel="stylesheet" href="5. Styleoferts.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="modal-postulacion">
+        <main class="detalle-principal">
+            
+            <h1 id="titulo-vacante" style="color: #2e54a5;">Cargando título...</h1>
+            
+            <div class="header-info-container">
+                <div class="info-badge">
+                    <div class="badge-icon"><i class="fas fa-building"></i></div>
+                    <div class="badge-text">
+                        <span class="label">Empresa</span>
+                        <span id="empresa-vacante" class="value">Cargando...</span>
+                    </div>
+                </div>
+
+                <div class="info-badge">
+                    <div class="badge-icon badge-purple"><i class="fas fa-info-circle"></i></div>
+                    <div class="badge-text">
+                        <span class="label">Estado</span>
+                        <span id="estado-vacante" class="value">Cargando...</span>
+                    </div>
+                </div>
+
+                <div class="info-badge">
+                    <div class="badge-icon badge-green"><i class="fas fa-money-bill-wave"></i></div>
+                    <div class="badge-text">
+                        <span class="label">Salario</span>
+                        <span id="salario-vacante" class="value">Cargando...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="acciones-rapidas">
+                <button class="btn-favorito"><i class="far fa-star"></i> AGREGAR A FAVORITOS</button>
+                <button class="btn-aplicar-oferta" onclick="abrirModalAplicacion()">APLICAR</button>
+            </div>
+
+            <section class="descripcion-texto">
+                <h3 style="color: #2e54a5;">DETALLES DE LA OFERTA</h3>
+                <hr>
+                <div class="grid-detalles">
+                    <div class="dato"><strong>Experiencia Requerida:</strong><span id="experiencia-vacante"> Cargando... </span></div>
+                    <div class="dato"><strong>Habilidades Clave:</strong><span id="habilidades-vacante"> Cargando... </span></div>
+                </div>
+
+                <section class="detalle-vacante">
+                    <div class="info-bloque">
+                        <h4><i class="fa fa-align-left"></i> Descripción del Puesto</h4>
+                        <p id="descripcion-vacante" style="white-space: pre-line;">Cargando descripción...</p>
+                    </div>
+                </section>
+
+                <div class="container-detalle">
+                    <aside class="sidebar-empresa">
+                        <h3 id="sidebar-empresa">Cargando...</h3>
+                        <div style="margin-bottom: 20px;">
+                            <a href="#" class="link-empresa">Ver más empleos de esta empresa →</a>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // 1. Extraemos el ID de la URL (Ejemplo: si la URL es ?id=5, esto saca el "5")
+        const parametrosUrl = new URLSearchParams(window.location.search);
+        const idVacante = parametrosUrl.get('id');
+
+        // 2. Conectamos a Supabase (¡Acuérdate de poner las credenciales de tu amigo aquí también!)
+        const supabaseUrl = 'https://mrretnaghvkipwggktfp.supabase.coI'; 
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1ycmV0bmFnaHZraXB3Z2drdGZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyMTA0NDgsImV4cCI6MjA5MTc4NjQ0OH0.UF_bhFFP__31GiiTxy2fsaKVqNjGie6H2LdGuAvZmoc'; 
+        const clienteSupabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+        async function cargarDetalleVacante() {
+            // Si alguien entra a esta página sin un ID, lo regresamos al menú
+            if (!idVacante) {
+                window.location.href = '/Inicio/1. indexmenu.html';
+                return;
+            }
+
+            // 3. Buscamos en Supabase SOLAMENTE la vacante que coincida con ese ID
+            const { data, error } = await clienteSupabase
+                .from('job_offer')
+                .select('*')
+                .eq('id', idVacante)
+                .single(); // ".single()" dice que solo queremos un resultado
+
+            if (error) {
+                console.error('Error al cargar la vacante:', error);
+                document.getElementById('titulo-vacante').innerText = 'Error al cargar la vacante';
+                return;
+            }
+
+            // 4. Reemplazamos los textos del HTML con los datos reales de Supabase
+            document.getElementById('titulo-vacante').innerText = data.Título;
+            document.getElementById('empresa-vacante').innerText = data.description_original;
+            document.getElementById('sidebar-empresa').innerText = data.description_original;
+            document.getElementById('estado-vacante').innerText = data.Estado;
+            document.getElementById('salario-vacante').innerText = data.salary_range;
+            document.getElementById('experiencia-vacante').innerText = data.experience_years + ' años';
+            document.getElementById('habilidades-vacante').innerText = data.skills_clave;
+            document.getElementById('descripcion-vacante').innerText = data.description_en;
+        }
+
+        // Ejecutamos la función al entrar a la página
+        cargarDetalleVacante();
+        
+        // Función placeholder para cuando hagan clic en APLICAR
+        function abrirModalAplicacion() {
+            alert("Aquí se abrirá tu modal para postularse a la vacante ID: " + idVacante);
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Postulación Profesional | Bolsa de Empleo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="7. indexpost.css">
@@ -174,4 +311,4 @@ function updateHiddenInput() {
 
     </script>
 </body>
-</html>
+</html> -->

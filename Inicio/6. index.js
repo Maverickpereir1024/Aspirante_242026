@@ -98,6 +98,10 @@ async function obtenerTrabajos() {
         .from('job_offer') 
         .select('*'); 
 
+        // AGREGA ESTAS DOS LÍNEAS AQUÍ:
+    console.log("Datos recibidos de Supabase:", data);
+    console.log("Errores de Supabase:", error);
+
     if (error) {
         console.error('Hubo un error al traer vacantes:', error);
         contenedor.innerHTML = '<p>Error de conexión con el servidor.</p>';
