@@ -117,7 +117,7 @@ async function obtenerTrabajos() {
         // Abrimos las comillas invertidas (backticks) y pegamos tu HTML exacto
     contenedor.innerHTML += `
         <main class="detalle-principal" style="margin-bottom: 40px; background: white; border-radius: 15px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h1 style="color: #2e54a5;">${trabajo.Título}</h1>
+            <h1 style="color: #2e54a5;">${trabajo.title}</h1>
             
             <div class="header-info-container">
                 <div class="info-badge">
