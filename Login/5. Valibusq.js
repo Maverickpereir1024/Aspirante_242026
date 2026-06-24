@@ -30,7 +30,7 @@ function validarYEnviar() {
 // ==========================================
 
 function obtenerUbicacion() {
-    const inputCiudad = document.getElementById('input-ciudad');
+    const inputCiudad = document.getElementById('lugar');
     inputCiudad.value = "Buscando ubicación..."; // Mensaje temporal
 
     // Verificamos si el navegador del celular soporta GPS
@@ -62,18 +62,18 @@ async function ubicacionExitosa(posicion) {
         }
 
         // Colocamos el resultado en el input
-        document.getElementById('input-ciudad').value = departamento;
+        document.getElementById('lugar').value = departamento;
 
     } catch (error) {
         console.error("Error al traducir las coordenadas:", error);
-        document.getElementById('input-ciudad').value = "";
+        document.getElementById('lugar').value = "";
         alert("No pudimos traducir tu ubicación. Por favor, escríbela manualmente.");
     }
 }
 
 // Si el usuario le da a "Bloquear" o hay un error
 function ubicacionError(error) {
-    const inputCiudad = document.getElementById('input-ciudad');
+    const inputCiudad = document.getElementById('lugar');
     inputCiudad.value = ""; // Limpiamos el mensaje temporal
     
     if (error.code === 1) {
