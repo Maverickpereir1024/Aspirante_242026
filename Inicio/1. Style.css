@@ -566,49 +566,110 @@ html, body {
     outline: none;
 }
 
+
+/* ==========================================
+   1. CONTENEDOR DE FILTROS (Scroll Horizontal)
+   ========================================== */
 .mobile-filters {
-   display: flex;
-   color: #070707;
-    gap: 15px; /* Un poco más de espacio entre ellos */
-    width: 100%; /* Ocupa todo el contenedor */
-    justify-content: space-between; /* Los distribuye equitativamente */
-    flex-wrap: nowrap; /* Por defecto en una fila */
-    overflow-x: auto; /* Si la pantalla es muy pequeña, permite scroll */
-    padding: 10px 0;
-    position: relative; /* Asegura que sus hijos (dropdowns) hereden la capa */
-    z-index: 51;
+    display: flex;
+    gap: 12px;
+    overflow-x: auto; /* Permite deslizar hacia los lados */
+    padding: 10px 15px;
+    width: 100%;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* Deslizamiento suave en iPhone */
+    /* flex-wrap: wrap; /* Si no caben, saltan a la siguiente línea */
+    position: relative;
+    z-index: 9999;
+
+    overflow: visible; /* Asegura que los menús desplegables no se corten */
+    overflow: visible !important; /* Refuerzo para navegadores que ignoran la primera línea */
+    overflow:visible; /* Refuerzo adicional para navegadores que ignoran las dos primeras líneas */
 }
 
+/* Ocultamos la barra de desplazamiento visual para que se vea limpio */
 .mobile-filters::-webkit-scrollbar {
     display: none;
 }
 
-.filter-chip {
-   flex: 1; /* ESTO ES LA CLAVE: hace que todos midan lo mismo y crezcan */
-    display: flex;
-    justify-content: center; /* Centra el texto dentro del chip */
-    align-items: center;
-    padding: 12px 20px; /* Un poco más altos para que se vean importantes */
-    background: var(--white);
-    border: 1px solid #e5e7eb;
-    border-radius: 12px; /* Un radio un poco más moderno */
-    white-space: nowrap;
-    font-size: 0.9rem;
-    color: #0e0e0f; /* Blanco azulado muy brillante */
-    font-weight: 600; /* Un poco más de grosor para que se lea mejor */    cursor: pointer;
-    transition: all 0.3s ease;
-    min-width: 120px; /* Evita que se aplasten demasiado */
+.filter-group {
+    position: relative; /* Clave para que el menú caiga debajo de su propio botón */
+    flex-shrink: 0; /* Evita que los botones se aplasten intentando caber todos */
 }
 
-.filter-chip.active {
-    background: var(--primary);
-    color: var(--white);
-    border-color: var(--primary);
+/* ==========================================
+   2. LOS BOTONES (CHIPS)
+   ========================================== */
+.filter-chip {
+    background: rgba(255, 255, 255, 0.1); /* Blanco casi transparente */
+    color: white;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 18px;
+    border-radius: 25px; /* Bordes bien redondeados */
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap; /* Impide que el texto del botón se parta en dos líneas */
+    backdrop-filter: blur(5px);
+    transition: 0.3s ease;
 }
 
 .filter-chip:hover {
-    background: #b7babd;
-    border-color: #6366f1; /* Color púrpura para indicar selección */
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================
+   3. LOS MENÚS DESPLEGABLES (EFECTO CRISTAL)
+   ========================================== */
+.filter-dropdown {
+    display: none; /* Tu JavaScript lo cambiará a 'flex' o 'block' al tocarlo */
+    position: absolute;
+    top: 115%; /* Aparece justo un poco por debajo del botón */
+    left: 0;
+    
+    /* El efecto transparente y elegante */
+    background: rgba(15, 23, 42, 0.85); /* Fondo oscuro transparente */
+    backdrop-filter: blur(12px); /* Desenfoca lo que está detrás */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    
+    padding: 12px;
+    min-width: 170px; /* Ancho mínimo para que no se vea aplastado */
+    z-index: 10000; /* Asegura que flote por encima de todo lo demás */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Estilo de las opciones (labels y checkboxes) */
+.filter-dropdown label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgb(9, 9, 9);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 6px;
+    transition: 0.2s;
+    border-radius: 6px;
+}
+
+.filter-dropdown label:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Damos color a los checkboxes y radios para que combinen con tu app */
+.filter-dropdown input {
+    accent-color: #8b5cf6; /* El color morado de MarkNic */
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
 }
 
 .dashboard-container {
