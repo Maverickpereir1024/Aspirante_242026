@@ -86,7 +86,7 @@ async function requestPermissions() {
 // ==========================================
 const supabaseUrl = 'https://mrretnaghvkipwggktfp.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1ycmV0bmFnaHZraXB3Z2drdGZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyMTA0NDgsImV4cCI6MjA5MTc4NjQ0OH0.UF_bhFFP__31GiiTxy2fsaKVqNjGie6H2LdGuAvZmoc';
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+const clienteSupabase = supabase.createClient(supabaseUrl, supabaseKey);
 
 async function obtenerTrabajos() {
     const contenedor = document.getElementById('lista-vacantes');
@@ -94,7 +94,7 @@ async function obtenerTrabajos() {
     if (!contenedor) return; 
 
     // Reemplazar 'vacantes' por el nombre real de la tabla en Supabase
-    const { data, error } = await supabase
+    const { data, error } = await clienteSupabase
         .from('job_offer') 
         .select('*'); 
 
@@ -110,35 +110,68 @@ async function obtenerTrabajos() {
     // Recorremos los datos y creamos el HTML para cada trabajo
     data.forEach(trabajo => {
         
-        contenedor.innerHTML += `
-        <div class="vacante-card" style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        // Abrimos las comillas invertidas (backticks) y pegamos tu HTML exacto
+    contenedor.innerHTML += `
+        <main class="detalle-principal" style="margin-bottom: 40px; background: white; border-radius: 15px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <h1 style="color: #2e54a5;">${trabajo.Título}</h1>
             
-            <div style="display: flex; justify-content: space-between; align-items: start;">
-                <h3 style="margin-top: 0; color: #2c3e50;">${trabajo.Título}</h3>
-                <span style="background-color: #e8f5e9; color: #2e7d32; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold;">
-                    ${trabajo.Estado}
-                </span>
+            <div class="header-info-container">
+                <div class="info-badge">
+                    <div class="badge-icon"><i class="fas fa-building"></i></div>
+                    <div class="badge-text">
+                        <span class="label">Empresa</span>
+                        <span class="value">${trabajo.description_original}</span>
+                    </div>
+                </div>
+
+                <div class="info-badge">
+                    <div class="badge-icon badge-purple"><i class="fas fa-calendar-alt"></i></div>
+                    <div class="badge-text">
+                        <span class="label">Estado</span>
+                        <span class="value">${trabajo.Estado}</span>
+                    </div>
+                </div>
+
+                <div class="info-badge">
+                    <div class="badge-icon badge-green"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="badge-text">
+                        <span class="label">Experiencia Mínima</span>
+                        <span class="value">${trabajo.experience_years} años</span>
+                    </div>
+                </div>
             </div>
 
-            <p style="margin: 5px 0;"><strong>Empresa:</strong> ${trabajo.description_original}</p>
-            
-            <p style="font-size: 14px; color: #555; line-height: 1.5;">
-                ${trabajo.description_en}
-            </p>
-
-            <div style="background-color: #f8f9fa; padding: 10px; border-radius: 6px; font-size: 13px; margin-bottom: 10px;">
-                <p style="margin: 0 0 5px 0;">💰 <strong>Salario:</strong> ${trabajo.salary_range}</p>
-                <p style="margin: 0 0 5px 0;">⏱️ <strong>Experiencia requerida:</strong> ${trabajo.experience_years} años</p>
-                <p style="margin: 0;">🛠️ <strong>Habilidades:</strong> ${trabajo.skills_clave}</p>
+            <div class="acciones-rapidas">
+                <button class="btn-favorito"><i class="far fa-star"></i> AGREGAR A FAVORITOS</button>
+                <button class="btn-aplicar-oferta" onclick="abrirModalAplicacion(${trabajo.id})">APLICAR A ESTA OFERTA</button>
             </div>
 
-            <button 
-                style="background-color: #007bff; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; width: 100%; font-weight: bold;"
-                onclick="abrirModalAplicacion(${trabajo.id})"
-            >
-                Aplicar a esta vacante
-            </button>
-        </div>
+            <section class="descripcion-texto">
+                <h3 style="color: #2e54a5;">DETALLES DE LA OFERTA</h3>
+                <hr>
+                <div class="grid-detalles">
+                    <div class="dato"><strong>Habilidades requeridas:</strong><span> ${trabajo.skills_clave} </span></div>
+                    <div class="dato"><strong>Salario ofrecido:</strong><span> ${trabajo.salary_range} </span></div>
+                </div>
+
+                <section class="detalle-vacante">
+                    <div class="info-bloque">
+                        <h4><i class="fa fa-user-check"></i> Descripción y Requisitos</h4>
+                        <p style="white-space: pre-line; color: #555; line-height: 1.6;">${trabajo.description_en}</p>
+                    </div>
+                </section>
+
+                <div class="container-detalle">
+                    <aside class="sidebar-empresa">
+                        <h3>${trabajo.description_original}</h3>
+                        <div style="margin-bottom: 20px;">
+                            <a href="#" class="link-empresa">Ver más empleos de esta empresa &rarr;</a>
+                        </div>
+                        <button class="btn-alertas">ENVIARME MAS OFERTAS COMO ESTAS</button>
+                    </aside>
+                </div>
+            </section>
+        </main>
     `;
 });
 }
