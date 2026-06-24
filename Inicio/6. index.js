@@ -21,6 +21,8 @@ const warningDiv = document.getElementById('warning-text');
         // SEGUNDO CLIC: Como la advertencia ya estaba ahí, cerramos el modal
         modal.style.display = 'none';
     }
+
+
 }
 
 // Ir al lobby de videollamada
@@ -79,18 +81,70 @@ async function requestPermissions() {
     }
 }
 
+// ==========================================
+// CONEXIÓN A SUPABASE (Base de datos)
+// ==========================================
+const supabaseUrl = 'https://mrretnaghvkipwggktfp.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1ycmV0bmFnaHZraXB3Z2drdGZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyMTA0NDgsImV4cCI6MjA5MTc4NjQ0OH0.UF_bhFFP__31GiiTxy2fsaKVqNjGie6H2LdGuAvZmoc';
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-/* Con este script le pedimos permisos de cámara y audio al dispositivo desde que le damos  aceptar y unirse
- le hacemos un llamado desde el archivo Ent.html a la función requestPermissions */
+async function obtenerTrabajos() {
+    const contenedor = document.getElementById('lista-vacantes');
+    
+    if (!contenedor) return; 
 
+    // Reemplazar 'vacantes' por el nombre real de la tabla en Supabase
+    const { data, error } = await supabase
+        .from('job_offer') 
+        .select('*'); 
 
+    if (error) {
+        console.error('Hubo un error al traer vacantes:', error);
+        contenedor.innerHTML = '<p>Error de conexión con el servidor.</p>';
+        return;
+    }
 
+    // Limpiamos el texto de "Cargando..."
+    contenedor.innerHTML = ''; 
+    
+    // Recorremos los datos y creamos el HTML para cada trabajo
+    data.forEach(trabajo => {
+        
+        contenedor.innerHTML += `
+        <div class="vacante-card" style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            
+            <div style="display: flex; justify-content: space-between; align-items: start;">
+                <h3 style="margin-top: 0; color: #2c3e50;">${trabajo.Título}</h3>
+                <span style="background-color: #e8f5e9; color: #2e7d32; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold;">
+                    ${trabajo.Estado}
+                </span>
+            </div>
 
+            <p style="margin: 5px 0;"><strong>Empresa:</strong> ${trabajo.description_original}</p>
+            
+            <p style="font-size: 14px; color: #555; line-height: 1.5;">
+                ${trabajo.description_en}
+            </p>
 
+            <div style="background-color: #f8f9fa; padding: 10px; border-radius: 6px; font-size: 13px; margin-bottom: 10px;">
+                <p style="margin: 0 0 5px 0;">💰 <strong>Salario:</strong> ${trabajo.salary_range}</p>
+                <p style="margin: 0 0 5px 0;">⏱️ <strong>Experiencia requerida:</strong> ${trabajo.experience_years} años</p>
+                <p style="margin: 0;">🛠️ <strong>Habilidades:</strong> ${trabajo.skills_clave}</p>
+            </div>
 
+            <button 
+                style="background-color: #007bff; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; width: 100%; font-weight: bold;"
+                onclick="abrirModalAplicacion(${trabajo.id})"
+            >
+                Aplicar a esta vacante
+            </button>
+        </div>
+    `;
+});
+}
 
-
-
+// Ejecutamos la función apenas cargue el archivo
+obtenerTrabajos();
 
 
 
