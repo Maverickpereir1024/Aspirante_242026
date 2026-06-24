@@ -82,3 +82,66 @@ function ubicacionError(error) {
         alert("No se pudo obtener tu ubicación actual. Intenta escribiéndola.");
     }
 }
+
+// ==========================================
+// AUTOCOMPLETADO PERSONALIZADO (A prueba de iPhone)
+// ==========================================
+
+// Guardamos los departamentos en un arreglo de JS
+const departamentosNica = [
+    "Boaco", "Carazo", "Chinandega", "Chontales", "Estelí",
+    "Granada", "Jinotega", "León", "Madriz", "Managua",
+    "Masaya", "Matagalpa", "Nueva Segovia", "Rivas",
+    "Río San Juan", "Costa Caribe Norte", "Costa Caribe Sur"
+];
+
+function filtrarDepartamentos() {
+    const input = document.getElementById('lugar');
+    const filtro = input.value.toLowerCase();
+    const listaSugerencias = document.getElementById('sugerencias-lista');
+
+    // Limpiamos la lista previa
+    listaSugerencias.innerHTML = '';
+
+    // Si el usuario borró todo y el input está vacío, escondemos la lista
+    if (filtro === '') {
+        listaSugerencias.style.display = 'none';
+        return;
+    }
+
+    // Buscamos cuáles departamentos coinciden con lo que escribió
+    const filtrados = departamentosNica.filter(dep => dep.toLowerCase().includes(filtro));
+
+    // Si hay coincidencias, las mostramos
+    if (filtrados.length > 0) {
+        listaSugerencias.style.display = 'block'; // Mostramos la caja flotante
+        
+        filtrados.forEach(dep => {
+            const li = document.createElement('li');
+            li.textContent = dep;
+            li.style.padding = '12px 15px';
+            li.style.cursor = 'pointer';
+            li.style.borderBottom = '1px solid #f8fafc';
+            li.style.color = '#333';
+            li.style.fontSize = '0.95rem';
+
+            // Cuando el usuario toca una opción en su celular
+            li.onclick = function() {
+                input.value = dep; // Rellenamos el input con la ciudad elegida
+                listaSugerencias.style.display = 'none'; // Escondemos la lista
+            };
+
+            listaSugerencias.appendChild(li);
+        });
+    } else {
+        // Si escribe algo que no existe, escondemos la lista
+        listaSugerencias.style.display = 'none';
+    }
+}
+
+// Truco extra: Si toca cualquier otra parte de la pantalla, se cierra la lista
+document.addEventListener('click', function(e) {
+    if(e.target.id !== 'lugar') {
+        document.getElementById('sugerencias-lista').style.display = 'none';
+    }
+});
