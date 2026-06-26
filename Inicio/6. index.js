@@ -111,71 +111,34 @@ async function obtenerTrabajos() {
     // Limpiamos el texto de "Cargando..."
     contenedor.innerHTML = ''; 
     
-    // Recorremos los datos y creamos el HTML para cada trabajo
-    data.forEach(trabajo => {
-        
-        // Abrimos las comillas invertidas (backticks) y pegamos tu HTML exacto
+   // Recorremos los datos y creamos las TARJETAS PEQUEÑAS para el menú
+data.forEach(trabajo => {
     contenedor.innerHTML += `
-        <main class="detalle-principal" style="margin-bottom: 40px; background: white; border-radius: 15px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h1 style="color: #2e54a5;">${trabajo.title}</h1>
+        <div style="background: white; border-radius: 12px; padding: 20px; margin-bottom: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); position: relative;">
             
-            <div class="header-info-container">
-                <div class="info-badge">
-                    <div class="badge-icon"><i class="fas fa-building"></i></div>
-                    <div class="badge-text">
-                        <span class="label">Empresa</span>
-                        <span class="value">${trabajo.description_original}</span>
-                    </div>
-                </div>
-
-                <div class="info-badge">
-                    <div class="badge-icon badge-purple"><i class="fas fa-calendar-alt"></i></div>
-                    <div class="badge-text">
-                        <span class="label">Estado</span>
-                        <span class="value">${trabajo.Estado}</span>
-                    </div>
-                </div>
-
-                <div class="info-badge">
-                    <div class="badge-icon badge-green"><i class="fas fa-map-marker-alt"></i></div>
-                    <div class="badge-text">
-                        <span class="label">Experiencia Mínima</span>
-                        <span class="value">${trabajo.experience_years} años</span>
-                    </div>
-                </div>
+            <h3 style="margin: 0 0 10px 0; font-size: 1.25rem; color: #1e293b;">${trabajo.title}</h3>
+            
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #4f46e5; font-size: 0.95rem; font-weight: 600;">
+                <i class="fas fa-building"></i> 
+                <span>${trabajo.description_original}</span>
+            </div>
+            
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 15px; color: #64748b; font-size: 0.9rem;">
+                <i class="fas fa-map-marker-alt"></i> 
+                <span>Managua, Nicaragua</span> 
             </div>
 
-            <div class="acciones-rapidas">
-                <button class="btn-favorito"><i class="far fa-star"></i> AGREGAR A FAVORITOS</button>
-                <button class="btn-aplicar-oferta" onclick="abrirModalAplicacion(${trabajo.id})">APLICAR A ESTA OFERTA</button>
+            <hr style="border: none; border-top: 1px solid #e2e8f0; margin-bottom: 15px;">
+
+            <div style="display: flex; justify-content: flex-end;">
+                <button 
+                    style="background: #2e54a5; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 0.9rem; transition: 0.3s;"
+                    onclick="window.location.href='7. indexpostularse.html?id=${trabajo.id}'"
+                >
+                    Ver detalles
+                </button>
             </div>
-
-            <section class="descripcion-texto">
-                <h3 style="color: #2e54a5;">DETALLES DE LA OFERTA</h3>
-                <hr>
-                <div class="grid-detalles">
-                    <div class="dato"><strong>Habilidades requeridas:</strong><span> ${trabajo.skills_clave} </span></div>
-                    <div class="dato"><strong>Salario ofrecido:</strong><span> ${trabajo.salary_range} </span></div>
-                </div>
-
-                <section class="detalle-vacante">
-                    <div class="info-bloque">
-                        <h4><i class="fa fa-user-check"></i> Descripción y Requisitos</h4>
-                        <p style="white-space: pre-line; color: #555; line-height: 1.6;">${trabajo.description_en}</p>
-                    </div>
-                </section>
-
-                <div class="container-detalle">
-                    <aside class="sidebar-empresa">
-                        <h3>${trabajo.description_original}</h3>
-                        <div style="margin-bottom: 20px;">
-                            <a href="#" class="link-empresa">Ver más empleos de esta empresa &rarr;</a>
-                        </div>
-                        <button class="btn-alertas">ENVIARME MAS OFERTAS COMO ESTAS</button>
-                    </aside>
-                </div>
-            </section>
-        </main>
+        </div>
     `;
 });
 }
