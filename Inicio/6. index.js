@@ -133,7 +133,7 @@ data.forEach(trabajo => {
             <div style="display: flex; justify-content: flex-end;">
                 <button 
                     style="background: #2e54a5; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 0.9rem; transition: 0.3s;"
-                    onclick="window.location.href='7. indexpostularse.html?id=${trabajo.id}'"
+                    onclick="window.location.href='/Inicio/7. indexpostularse.html?id=${trabajo.id}'"
                 >
                     Ver detalles
                 </button>
